@@ -18,8 +18,8 @@ export default defineConfig({
         name: '彩记 Scratch Track',
         short_name: '彩记',
         description: '彩票记账与虚拟刮刮乐体验',
-        theme_color: '#D32F2F',
-        background_color: '#FAFAFA',
+        theme_color: '#B71C1C',
+        background_color: '#F7F5FA',
         display: 'standalone',
         start_url: './',
         icons: [

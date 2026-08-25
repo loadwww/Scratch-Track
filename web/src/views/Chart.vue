@@ -9,8 +9,8 @@
       <div class="chart-title">最近 6 个月投入/中奖对比 <span class="chart-unit">单位：元</span></div>
       <BarChart :data="monthChartData" unit="100" />
       <div class="legend">
-        <span class="legend-item"><span class="legend-dot" style="background:#D32F2F"></span>投入</span>
-        <span class="legend-item"><span class="legend-dot" style="background:#4CAF50"></span>中奖</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#E53935"></span>投入</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#43A047"></span>中奖</span>
       </div>
     </div>
 
@@ -18,8 +18,8 @@
       <div class="chart-title">最近 6 次记录投入/中奖对比 <span class="chart-unit">单位：元</span></div>
       <BarChart :data="recentChartData" unit="50" />
       <div class="legend">
-        <span class="legend-item"><span class="legend-dot" style="background:#D32F2F"></span>投入</span>
-        <span class="legend-item"><span class="legend-dot" style="background:#4CAF50"></span>中奖</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#E53935"></span>投入</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#43A047"></span>中奖</span>
       </div>
     </div>
 

@@ -43,27 +43,27 @@
 
     <div class="func-grid">
       <div class="func-item" @click="$router.push('/lottery')">
-        <van-icon name="notes-o" size="32" color="#D32F2F" />
+        <van-icon name="notes-o" size="32" color="#B71C1C" />
         <div class="func-name">中奖记录</div>
       </div>
       <div class="func-item" @click="$router.push('/diary')">
-        <van-icon name="edit" size="32" color="#D32F2F" />
+        <van-icon name="edit" size="32" color="#B71C1C" />
         <div class="func-name">彩票日记</div>
       </div>
       <div class="func-item" @click="$router.push('/highlight')">
-        <van-icon name="star-o" size="32" color="#D32F2F" />
+        <van-icon name="star-o" size="32" color="#B71C1C" />
         <div class="func-name">高光时刻</div>
       </div>
       <div class="func-item" @click="$router.push('/chart')">
-        <van-icon name="chart-trending-o" size="32" color="#D32F2F" />
+        <van-icon name="chart-trending-o" size="32" color="#B71C1C" />
         <div class="func-name">历史盈亏</div>
       </div>
       <div class="func-item" @click="$router.push('/random')">
-        <van-icon name="aim" size="32" color="#D32F2F" />
+        <van-icon name="aim" size="32" color="#B71C1C" />
         <div class="func-name">随机数</div>
       </div>
       <div class="func-item" @click="$router.push('/settings')">
-        <van-icon name="setting-o" size="32" color="#D32F2F" />
+        <van-icon name="setting-o" size="32" color="#B71C1C" />
         <div class="func-name">设置</div>
       </div>
     </div>
@@ -111,9 +111,9 @@ const budgetBarWidth = computed(() =>
 const budgetBarColor = computed(() => {
   const pct = settings.monthlyBudget > 0 ? monthInvest.value / settings.monthlyBudget : 0
   if (pct > 1) return '#B71C1C'
-  if (pct > 0.8) return '#FF9800'
-  if (pct > 0.5) return '#2196F3'
-  return '#4CAF50'
+  if (pct > 0.8) return '#FFB300'
+  if (pct > 0.5) return '#1E88E5'
+  return '#43A047'
 })
 
 const budgetAlert = computed(() => {

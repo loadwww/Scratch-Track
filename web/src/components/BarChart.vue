@@ -51,11 +51,11 @@ function draw() {
     const x = padding.left + groupWidth * i + groupWidth / 2 - barWidth
 
     const investH = (d.invest / maxVal) * chartH
-    ctx.fillStyle = '#D32F2F'
+    ctx.fillStyle = '#E53935'
     ctx.fillRect(x, padding.top + chartH - investH, barWidth, investH)
 
     const winH = (d.win / maxVal) * chartH
-    ctx.fillStyle = '#4CAF50'
+    ctx.fillStyle = '#43A047'
     ctx.fillRect(x + barWidth, padding.top + chartH - winH, barWidth, winH)
 
     ctx.fillStyle = '#757575'

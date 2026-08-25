@@ -1,11 +1,11 @@
 {
   "name": "彩记 Scratch Track",
   "short_name": "彩记",
-  "description": "彩票记账与虚拟刮刮乐体验",
+  "description": "彩票记账应用",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#FAFAFA",
-  "theme_color": "#D32F2F",
+  "background_color": "#F7F5FA",
+  "theme_color": "#B71C1C",
   "icons": [
     {
       "src": "icon.svg",

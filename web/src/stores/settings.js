@@ -4,7 +4,7 @@ import { ref, watch } from 'vue'
 export const useSettingsStore = defineStore('settings', () => {
   const marqueeTexts = ref(JSON.parse(localStorage.getItem('marqueeTexts') || '["见好就收"]'))
   const monthlyBudget = ref(Number(localStorage.getItem('monthlyBudget') || 0))
-  const themeColor = ref(localStorage.getItem('themeColor') || '#D32F2F')
+  const themeColor = ref(localStorage.getItem('themeColor') || '#B71C1C')
   const wallpaper = ref(localStorage.getItem('wallpaper') || '')
   const musicEnabled = ref(localStorage.getItem('musicEnabled') !== 'false')
   const musicName = ref(localStorage.getItem('musicName') || '好运来')

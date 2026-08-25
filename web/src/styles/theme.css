@@ -1,19 +1,22 @@
 :root {
-  --primary-color: #D32F2F;
-  --primary-light: #FFCDD2;
-  --primary-dark: #B71C1C;
-  --primary-container: #FFEBEE;
+  --primary-color: #B71C1C;
+  --primary-light: #E53935;
+  --primary-dark: #8B0000;
+  --primary-container: #FFCDD2;
   --on-primary: #FFFFFF;
-  --on-primary-container: #B71C1C;
+  --on-primary-container: #5D0A0A;
   --surface: #FFFFFF;
-  --surface-variant: #F5F5F5;
-  --on-surface: #212121;
-  --on-surface-variant: #757575;
-  --background: #FAFAFA;
-  --error: #D32F2F;
-  --success: #4CAF50;
-  --warning: #FF9800;
-  --info: #2196F3;
+  --surface-variant: #FDE7E9;
+  --on-surface: #1B1B1F;
+  --on-surface-variant: #666670;
+  --background: #F7F5FA;
+  --error: #E53935;
+  --success: #43A047;
+  --warning: #FB8C00;
+  --info: #1E88E5;
+  --invest: #E53935;
+  --win: #43A047;
+  --gold: #FFB300;
 }
 
 * {
