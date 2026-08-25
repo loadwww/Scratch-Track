@@ -16,7 +16,7 @@
 
     <div class="card">
       <div class="chart-title">最近 6 次记录投入/中奖对比 <span class="chart-unit">单位：元</span></div>
-      <BarChart :data="recentChartData" unit="50" />
+      <BarChart :data="recentChartData" unit="20" />
       <div class="legend">
         <span class="legend-item"><span class="legend-dot" style="background:#E53935"></span>投入</span>
         <span class="legend-item"><span class="legend-dot" style="background:#43A047"></span>中奖</span>
