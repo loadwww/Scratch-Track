@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Scratch Track(彩记)</string>
+    <string name="default_marquee_text">见好就收</string>
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- 彩票球 1 (红) -->
+    <path
+        android:fillColor="#FFE53935"
+        android:pathData="M38,42 m-14,0 a14,14 0 1,0 28,0 a14,14 0 1,0 -28,0" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M38,42 m-7,0 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0" />
+    <path
+        android:fillColor="#FFE53935"
+        android:pathData="M35.5,44.5 L38,47 L41,42 L41,40 L38,43 L35.5,40 Z" />
+    <!-- 彩票球 2 (蓝) -->
+    <path
+        android:fillColor="#FF1E88E5"
+        android:pathData="M70,42 m-14,0 a14,14 0 1,0 28,0 a14,14 0 1,0 -28,0" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M70,42 m-7,0 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0" />
+    <path
+        android:fillColor="#FF1E88E5"
+        android:pathData="M67.5,44.5 L70,47 L73,42 L73,40 L70,43 L67.5,40 Z" />
+    <!-- 彩票球 3 (金，大奖) -->
+    <path
+        android:fillColor="#FFFFB300"
+        android:pathData="M54,74 m-14,0 a14,14 0 1,0 28,0 a14,14 0 1,0 -28,0" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M54,74 m-7,0 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0" />
+    <path
+        android:fillColor="#FFFFB300"
+        android:pathData="M51.5,76.5 L54,79 L57,74 L57,72 L54,75 L51.5,72 Z" />
+</vector>
