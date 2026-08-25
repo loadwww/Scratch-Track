@@ -5,7 +5,9 @@
       <van-icon name="setting-o" size="22" color="#FFFFFF" @click="$router.push('/settings')" />
     </div>
 
-    <div class="marquee-text" @click="rotateMarquee">{{ currentMarquee }}</div>
+    <div v-if="budgetAlert" class="budget-alert" :style="{ color: alertColor }">
+      {{ budgetAlert }}
+    </div>
 
     <div class="card">
       <div class="stat-row">
@@ -37,21 +39,19 @@
       </div>
     </div>
 
-    <div v-if="budgetAlert" class="budget-alert" :style="{ color: alertColor }">
-      {{ budgetAlert }}
-    </div>
+    <div class="marquee-text" @click="rotateMarquee">{{ currentMarquee }}</div>
 
     <div class="func-grid">
       <div class="func-item" @click="$router.push('/lottery')">
-        <van-icon name="notes-o" size="32" color="#B71C1C" />
+        <van-icon name="balance-o" size="32" color="#B71C1C" />
         <div class="func-name">中奖记录</div>
       </div>
       <div class="func-item" @click="$router.push('/diary')">
-        <van-icon name="edit" size="32" color="#B71C1C" />
+        <van-icon name="notes-o" size="32" color="#B71C1C" />
         <div class="func-name">彩票日记</div>
       </div>
       <div class="func-item" @click="$router.push('/highlight')">
-        <van-icon name="star-o" size="32" color="#B71C1C" />
+        <van-icon name="photo-o" size="32" color="#B71C1C" />
         <div class="func-name">高光时刻</div>
       </div>
       <div class="func-item" @click="$router.push('/chart')">
