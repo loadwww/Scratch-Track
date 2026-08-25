@@ -9,7 +9,10 @@ export default defineConfig({
       registerType: 'autoUpdate',
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,woff2}'],
-        navigateFallback: 'index.html'
+        navigateFallback: 'index.html',
+        cleanupOutdatedCaches: true,
+        skipWaiting: true,
+        clientsClaim: true
       },
       manifest: {
         name: '彩记 Scratch Track',
