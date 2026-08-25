@@ -18,6 +18,8 @@
 
     <van-cell-group inset style="margin-top: 12px">
       <van-field label="月度预算" v-model="budgetInput" type="number" placeholder="设置月度购彩预算" @blur="saveBudget" />
+      <van-field label="黄色警戒线(%)" v-model="warnInput" type="number" placeholder="默认60" @blur="saveWarn" />
+      <van-field label="红色警戒线(%)" v-model="alertInput" type="number" placeholder="默认80" @blur="saveAlert" />
     </van-cell-group>
 
     <van-cell-group inset style="margin-top: 12px">
@@ -52,12 +54,20 @@ import { showToast } from 'vant'
 
 const settings = useSettingsStore()
 const budgetInput = ref(String(settings.monthlyBudget || ''))
+const warnInput = ref(String(settings.budgetWarnPercent || 60))
+const alertInput = ref(String(settings.budgetAlertPercent || 80))
 const musicInput = ref(null)
 const wallpaperInput = ref(null)
 const importInput = ref(null)
 
 function saveBudget() {
   settings.monthlyBudget = Number(budgetInput.value) || 0
+}
+function saveWarn() {
+  settings.budgetWarnPercent = Number(warnInput.value) || 60
+}
+function saveAlert() {
+  settings.budgetAlertPercent = Number(alertInput.value) || 80
 }
 
 function pickMusic() { musicInput.value?.click() }

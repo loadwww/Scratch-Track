@@ -4,7 +4,7 @@
       <span class="home-title">Scratch Track</span>
     </div>
 
-    <div v-if="budgetAlert" class="budget-alert" :style="{ color: alertColor }">
+    <div v-if="budgetAlert" class="budget-alert" :style="{ color: alertColor, background: alertBgColor }">
       {{ budgetAlert }}
     </div>
 
@@ -109,23 +109,30 @@ const budgetBarWidth = computed(() =>
 )
 const budgetBarColor = computed(() => {
   const pct = settings.monthlyBudget > 0 ? monthInvest.value / settings.monthlyBudget : 0
-  if (pct > 1) return '#B71C1C'
-  if (pct > 0.8) return '#FFB300'
-  if (pct > 0.5) return '#1E88E5'
+  if (pct > 1 || pct >= settings.budgetAlertPercent / 100) return '#B71C1C'
+  if (pct >= settings.budgetWarnPercent / 100) return '#FFB300'
   return '#43A047'
 })
 
 const budgetAlert = computed(() => {
   if (settings.monthlyBudget <= 0) return ''
-  if (monthInvest.value > settings.monthlyBudget)
-    return `已超支 ¥${(monthInvest.value - settings.monthlyBudget).toFixed(2)}`
   const pct = monthInvest.value / settings.monthlyBudget
-  if (pct >= 0.8) return `接近预算上限，请控制`
+  if (pct > 1) return `已超支 ¥${(monthInvest.value - settings.monthlyBudget).toFixed(2)}`
+  if (pct >= settings.budgetAlertPercent / 100) return '预算已达警戒线，请控制'
+  if (pct >= settings.budgetWarnPercent / 100) return '预算使用较多，注意控制'
   return ''
 })
 const alertColor = computed(() => {
-  if (monthInvest.value > settings.monthlyBudget) return '#B71C1C'
-  return '#FF9800'
+  const pct = settings.monthlyBudget > 0 ? monthInvest.value / settings.monthlyBudget : 0
+  if (pct > 1 || pct >= settings.budgetAlertPercent / 100) return '#B71C1C'
+  if (pct >= settings.budgetWarnPercent / 100) return '#FFB300'
+  return '#43A047'
+})
+const alertBgColor = computed(() => {
+  const pct = settings.monthlyBudget > 0 ? monthInvest.value / settings.monthlyBudget : 0
+  if (pct > 1 || pct >= settings.budgetAlertPercent / 100) return 'rgba(183, 28, 28, 0.12)'
+  if (pct >= settings.budgetWarnPercent / 100) return 'rgba(255, 179, 0, 0.12)'
+  return 'rgba(67, 160, 71, 0.12)'
 })
 
 const currentMarquee = computed(() => {
@@ -186,8 +193,10 @@ const bgStyle = computed(() =>
 }
 .budget-alert {
   text-align: center;
-  padding: 8px 16px;
+  padding: 10px 16px;
   font-weight: 600;
   font-size: 14px;
+  border-radius: 12px;
+  margin: 8px 16px;
 }
 </style>

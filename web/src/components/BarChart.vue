@@ -30,24 +30,17 @@ function draw() {
   const chartH = height - padding.top - padding.bottom
 
   const maxVal = Math.max(...props.data.map(d => Math.max(d.invest, d.win)), 1)
+  const maxAxis = Math.max(Math.ceil(maxVal / props.unit) * props.unit, props.unit)
+  const steps = Math.max(1, maxAxis / props.unit)
   const groupWidth = chartW / Math.max(props.data.length, 1)
   const barWidth = groupWidth * 0.35
-
-  // 动态选择合适的刻度间隔
-  const rawStep = maxVal / 4
-  let actualUnit
-  if (rawStep >= 100) actualUnit = 100
-  else if (rawStep >= 50) actualUnit = 50
-  else if (rawStep >= 10) actualUnit = 10
-  else actualUnit = 1
 
   ctx.strokeStyle = '#E0E0E0'
   ctx.fillStyle = '#666670'
   ctx.font = '10px sans-serif'
-  const steps = 4
   for (let i = 0; i <= steps; i++) {
     const y = padding.top + chartH - (chartH / steps) * i
-    const val = Math.round((maxVal / steps) * i / actualUnit) * actualUnit
+    const val = props.unit * i
     ctx.beginPath()
     ctx.moveTo(padding.left, y)
     ctx.lineTo(width - padding.right, y)
@@ -58,11 +51,11 @@ function draw() {
   props.data.forEach((d, i) => {
     const x = padding.left + groupWidth * i + groupWidth / 2 - barWidth
 
-    const investH = (d.invest / maxVal) * chartH
+    const investH = (d.invest / maxAxis) * chartH
     ctx.fillStyle = '#E53935'
     ctx.fillRect(x, padding.top + chartH - investH, barWidth, investH)
 
-    const winH = (d.win / maxVal) * chartH
+    const winH = (d.win / maxAxis) * chartH
     ctx.fillStyle = '#43A047'
     ctx.fillRect(x + barWidth, padding.top + chartH - winH, barWidth, winH)
 
