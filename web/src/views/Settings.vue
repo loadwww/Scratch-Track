@@ -23,6 +23,12 @@
     </van-cell-group>
 
     <van-cell-group inset style="margin-top: 12px">
+      <van-field label="超支提醒文字" v-model="overText" placeholder="如：已超支 ¥" @blur="saveOverText" />
+      <van-field label="黄色警戒文字" v-model="warnText" placeholder="如：预算使用较多，注意控制" @blur="saveWarnText" />
+      <van-field label="红色警戒文字" v-model="alertText" placeholder="如：预算已达警戒线，请控制" @blur="saveAlertText" />
+    </van-cell-group>
+
+    <van-cell-group inset style="margin-top: 12px">
       <van-cell title="盈利庆祝音乐" center>
         <template #right-icon>
           <van-switch v-model="settings.musicEnabled" />
@@ -56,6 +62,9 @@ const settings = useSettingsStore()
 const budgetInput = ref(String(settings.monthlyBudget || ''))
 const warnInput = ref(String(settings.budgetWarnPercent || 60))
 const alertInput = ref(String(settings.budgetAlertPercent || 80))
+const overText = ref(settings.budgetOverText || '已超支 ¥')
+const warnText = ref(settings.budgetWarnText || '预算使用较多，注意控制')
+const alertText = ref(settings.budgetAlertText || '预算已达警戒线，请控制')
 const musicInput = ref(null)
 const wallpaperInput = ref(null)
 const importInput = ref(null)
@@ -68,6 +77,15 @@ function saveWarn() {
 }
 function saveAlert() {
   settings.budgetAlertPercent = Number(alertInput.value) || 80
+}
+function saveOverText() {
+  settings.budgetOverText = overText.value || '已超支 ¥'
+}
+function saveWarnText() {
+  settings.budgetWarnText = warnText.value || '预算使用较多，注意控制'
+}
+function saveAlertText() {
+  settings.budgetAlertText = alertText.value || '预算已达警戒线，请控制'
 }
 
 function pickMusic() { musicInput.value?.click() }

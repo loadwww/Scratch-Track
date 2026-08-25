@@ -6,6 +6,9 @@ export const useSettingsStore = defineStore('settings', () => {
   const monthlyBudget = ref(Number(localStorage.getItem('monthlyBudget') || 0))
   const budgetWarnPercent = ref(Number(localStorage.getItem('budgetWarnPercent') || 60))
   const budgetAlertPercent = ref(Number(localStorage.getItem('budgetAlertPercent') || 80))
+  const budgetOverText = ref(localStorage.getItem('budgetOverText') || '已超支 ¥')
+  const budgetWarnText = ref(localStorage.getItem('budgetWarnText') || '预算使用较多，注意控制')
+  const budgetAlertText = ref(localStorage.getItem('budgetAlertText') || '预算已达警戒线，请控制')
   const themeColor = ref(localStorage.getItem('themeColor') || '#B71C1C')
   const wallpaper = ref(localStorage.getItem('wallpaper') || '')
   const musicEnabled = ref(localStorage.getItem('musicEnabled') !== 'false')
@@ -18,6 +21,9 @@ export const useSettingsStore = defineStore('settings', () => {
   watch(monthlyBudget, v => localStorage.setItem('monthlyBudget', String(v)))
   watch(budgetWarnPercent, v => localStorage.setItem('budgetWarnPercent', String(v)))
   watch(budgetAlertPercent, v => localStorage.setItem('budgetAlertPercent', String(v)))
+  watch(budgetOverText, v => localStorage.setItem('budgetOverText', v))
+  watch(budgetWarnText, v => localStorage.setItem('budgetWarnText', v))
+  watch(budgetAlertText, v => localStorage.setItem('budgetAlertText', v))
   watch(themeColor, v => localStorage.setItem('themeColor', v))
   watch(wallpaper, v => localStorage.setItem('wallpaper', v))
   watch(musicEnabled, v => localStorage.setItem('musicEnabled', String(v)))
@@ -27,7 +33,9 @@ export const useSettingsStore = defineStore('settings', () => {
   watch(lastClaimDate, v => localStorage.setItem('lastClaimDate', v))
 
   return {
-    marqueeTexts, monthlyBudget, budgetWarnPercent, budgetAlertPercent, themeColor, wallpaper,
+    marqueeTexts, monthlyBudget, budgetWarnPercent, budgetAlertPercent,
+    budgetOverText, budgetWarnText, budgetAlertText,
+    themeColor, wallpaper,
     musicEnabled, musicName, musicData, scratchDailyCoins, lastClaimDate
   }
 })

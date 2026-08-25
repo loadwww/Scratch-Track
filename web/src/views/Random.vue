@@ -51,15 +51,18 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 const minVal = ref(1)
 const maxVal = ref(100)
 const result = ref(null)
 const poolInput = ref('')
-const poolNumbers = ref([])
-const poolCreated = ref(false)
+const poolNumbers = ref(JSON.parse(localStorage.getItem('poolNumbers') || '[]'))
+const poolCreated = ref(JSON.parse(localStorage.getItem('poolCreated') || 'false'))
 const poolResult = ref(null)
+
+watch(poolNumbers, v => localStorage.setItem('poolNumbers', JSON.stringify(v)), { deep: true })
+watch(poolCreated, v => localStorage.setItem('poolCreated', JSON.stringify(v)))
 
 function generate() {
   const min = Number(minVal.value)

@@ -19,6 +19,10 @@
           <div class="stat-value" style="color: #43A047">¥{{ monthWin.toFixed(2) }}</div>
         </div>
         <div class="stat-item">
+          <div class="stat-label" :class="profitClass">本月盈收</div>
+          <div class="stat-value" :class="profitClass">{{ profit >= 0 ? '+' : '' }}¥{{ profit.toFixed(2) }}</div>
+        </div>
+        <div class="stat-item">
           <div class="stat-label" :class="profitClass">盈亏比</div>
           <div class="stat-value" :class="profitClass">{{ profitRatio }}%</div>
         </div>
@@ -117,9 +121,9 @@ const budgetBarColor = computed(() => {
 const budgetAlert = computed(() => {
   if (settings.monthlyBudget <= 0) return ''
   const pct = monthInvest.value / settings.monthlyBudget
-  if (pct > 1) return `已超支 ¥${(monthInvest.value - settings.monthlyBudget).toFixed(2)}`
-  if (pct >= settings.budgetAlertPercent / 100) return '预算已达警戒线，请控制'
-  if (pct >= settings.budgetWarnPercent / 100) return '预算使用较多，注意控制'
+  if (pct > 1) return `${settings.budgetOverText}${(monthInvest.value - settings.monthlyBudget).toFixed(2)}`
+  if (pct >= settings.budgetAlertPercent / 100) return settings.budgetAlertText
+  if (pct >= settings.budgetWarnPercent / 100) return settings.budgetWarnText
   return ''
 })
 const alertColor = computed(() => {
