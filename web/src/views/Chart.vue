@@ -30,7 +30,11 @@
         <div class="older-bar-container">
           <div class="older-bar" :style="{ width: m.barWidth, background: m.profit >= 0 ? 'var(--success)' : 'var(--error)' }"></div>
         </div>
-        <span :class="m.profit >= 0 ? 'profit-positive' : 'profit-negative'">{{ m.profit >= 0 ? '+' : '' }}{{ m.profit.toFixed(0) }} 元</span>
+        <span class="older-detail">
+          <span style="color: #E53935">投¥{{ m.invest }}</span>
+          <span style="color: #43A047">中¥{{ m.win }}</span>
+          <span :class="m.profit >= 0 ? 'profit-positive' : 'profit-negative'">{{ m.profit >= 0 ? '+' : '' }}{{ m.profit.toFixed(0) }}</span>
+        </span>
       </div>
     </div>
   </div>
@@ -79,7 +83,7 @@ const olderData = computed(() => {
   const maxVal = Math.max(...Object.values(grouped).map(g => Math.abs(g.win - g.invest)), 1)
   return Object.entries(grouped).sort((a, b) => b[0].localeCompare(a[0])).map(([key, v]) => {
     const profit = v.win - v.invest
-    return { key, profit, barWidth: (Math.abs(profit) / maxVal * 100) + '%' }
+    return { key, profit, invest: v.invest, win: v.win, barWidth: (Math.abs(profit) / maxVal * 100) + '%' }
   })
 })
 </script>
@@ -90,8 +94,9 @@ const olderData = computed(() => {
 .legend { display: flex; gap: 16px; justify-content: center; margin-top: 8px; font-size: 13px; color: var(--on-surface-variant); }
 .legend-item { display: flex; align-items: center; gap: 4px; }
 .legend-dot { display: inline-block; width: 10px; height: 10px; border-radius: 2px; }
-.older-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
-.older-month { font-size: 12px; width: 70px; color: var(--on-surface-variant); }
+.older-row { display: flex; align-items: center; gap: 8px; margin: 8px 0; }
+.older-month { font-size: 12px; width: 70px; color: var(--on-surface-variant); flex-shrink: 0; }
 .older-bar-container { flex: 1; height: 16px; background: var(--surface-variant); border-radius: 4px; overflow: hidden; }
 .older-bar { height: 100%; border-radius: 4px; }
+.older-detail { display: flex; gap: 6px; font-size: 11px; flex-shrink: 0; }
 </style>

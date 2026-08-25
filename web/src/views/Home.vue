@@ -2,7 +2,6 @@
   <div class="page" :style="bgStyle">
     <div class="home-header">
       <span class="home-title">Scratch Track</span>
-      <van-icon name="setting-o" size="22" color="#FFFFFF" @click="$router.push('/settings')" />
     </div>
 
     <div v-if="budgetAlert" class="budget-alert" :style="{ color: alertColor }">
@@ -13,11 +12,11 @@
       <div class="stat-row">
         <div class="stat-item">
           <div class="stat-label">本月投入</div>
-          <div class="stat-value">¥{{ monthInvest.toFixed(2) }}</div>
+          <div class="stat-value" style="color: #E53935">¥{{ monthInvest.toFixed(2) }}</div>
         </div>
         <div class="stat-item">
           <div class="stat-label">本月中奖</div>
-          <div class="stat-value">¥{{ monthWin.toFixed(2) }}</div>
+          <div class="stat-value" style="color: #43A047">¥{{ monthWin.toFixed(2) }}</div>
         </div>
         <div class="stat-item">
           <div class="stat-label" :class="profitClass">盈亏比</div>
