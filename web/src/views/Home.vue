@@ -1,8 +1,8 @@
 <template>
   <div class="page" :style="bgStyle">
     <div class="home-header">
-      <span class="home-title">彩记</span>
-      <van-icon name="setting-o" size="22" @click="$router.push('/settings')" />
+      <span class="home-title">Scratch Track</span>
+      <van-icon name="setting-o" size="22" color="#FFFFFF" @click="$router.push('/settings')" />
     </div>
 
     <div class="marquee-text" @click="rotateMarquee">{{ currentMarquee }}</div>
@@ -155,11 +155,12 @@ const bgStyle = computed(() =>
   align-items: center;
   justify-content: space-between;
   padding: 16px;
+  background: #B71C1C;
 }
 .home-title {
   font-size: 22px;
   font-weight: bold;
-  color: var(--primary-color);
+  color: #FFFFFF;
 }
 .budget-section {
   margin-top: 14px;

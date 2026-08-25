@@ -33,13 +33,21 @@ function draw() {
   const groupWidth = chartW / Math.max(props.data.length, 1)
   const barWidth = groupWidth * 0.35
 
+  // 动态选择合适的刻度间隔
+  const rawStep = maxVal / 4
+  let actualUnit
+  if (rawStep >= 100) actualUnit = 100
+  else if (rawStep >= 50) actualUnit = 50
+  else if (rawStep >= 10) actualUnit = 10
+  else actualUnit = 1
+
   ctx.strokeStyle = '#E0E0E0'
-  ctx.fillStyle = '#757575'
+  ctx.fillStyle = '#666670'
   ctx.font = '10px sans-serif'
   const steps = 4
   for (let i = 0; i <= steps; i++) {
     const y = padding.top + chartH - (chartH / steps) * i
-    const val = Math.round((maxVal / steps) * i / props.unit) * props.unit
+    const val = Math.round((maxVal / steps) * i / actualUnit) * actualUnit
     ctx.beginPath()
     ctx.moveTo(padding.left, y)
     ctx.lineTo(width - padding.right, y)
@@ -58,9 +66,15 @@ function draw() {
     ctx.fillStyle = '#43A047'
     ctx.fillRect(x + barWidth, padding.top + chartH - winH, barWidth, winH)
 
-    ctx.fillStyle = '#757575'
-    ctx.font = '10px sans-serif'
+    // 柱子上方显示数值
+    ctx.fillStyle = '#666670'
+    ctx.font = '9px sans-serif'
     ctx.textAlign = 'center'
+    if (d.invest > 0) ctx.fillText('¥' + d.invest, x + barWidth / 2, padding.top + chartH - investH - 4)
+    if (d.win > 0) ctx.fillText('¥' + d.win, x + barWidth * 1.5, padding.top + chartH - winH - 4)
+
+    ctx.fillStyle = '#666670'
+    ctx.font = '10px sans-serif'
     ctx.fillText(d.label, x + barWidth, padding.top + chartH + 16)
     ctx.textAlign = 'start'
   })
