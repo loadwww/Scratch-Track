@@ -4,20 +4,6 @@
 
 ## 功能概览
 
-### 应用截图
-
-| 首页仪表盘 | 彩票日记 | 高光时刻 |
-|:---:|:---:|:---:|
-| ![首页](docs/screenshots/home.png) | ![彩票日记](docs/screenshots/diary.png) | ![高光时刻](docs/screenshots/highlight.png) |
-
-| 历史盈亏图表 | 随机数生成 | 虚拟刮刮乐 |
-|:---:|:---:|:---:|
-| ![历史盈亏](docs/screenshots/chart.png) | ![随机数](docs/screenshots/random.png) | ![刮刮乐](docs/screenshots/scratch.png) |
-
-| 设置页面 |
-|:---:|
-| ![设置](docs/screenshots/settings.png) |
-
 ### 首页仪表盘
 - 实时显示本月投入、中奖、盈亏金额及盈亏比例
 - 月度预算进度条（绿/蓝/黄/深红四色分段提示）
