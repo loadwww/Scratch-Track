@@ -22,13 +22,17 @@
           <div class="stat-value" :class="profitClass">{{ profitRatio }}%</div>
         </div>
       </div>
-      <div v-if="settings.monthlyBudget > 0" class="budget-section">
-        <div class="budget-info">
+      <div class="budget-section">
+        <div v-if="settings.monthlyBudget > 0" class="budget-info">
           <span>预算 ¥{{ monthInvest.toFixed(2) }} / ¥{{ settings.monthlyBudget.toFixed(2) }}</span>
           <span>{{ budgetPercent }}%</span>
         </div>
+        <div v-else class="budget-info">
+          <span style="color: var(--on-surface-variant)">未设置月度预算</span>
+          <span style="color: var(--primary-color)" @click="$router.push('/settings')">去设置</span>
+        </div>
         <div class="budget-bar-container">
-          <div class="budget-bar-fill" :style="{ width: budgetBarWidth, background: budgetBarColor }"></div>
+          <div class="budget-bar-fill" :style="{ width: budgetBarWidth, background: settings.monthlyBudget > 0 ? budgetBarColor : '#E0E0E0' }"></div>
         </div>
       </div>
     </div>
@@ -58,9 +62,9 @@
         <van-icon name="aim" size="32" color="#D32F2F" />
         <div class="func-name">随机数</div>
       </div>
-      <div class="func-item" @click="$router.push('/scratch')">
-        <van-icon name="gem-o" size="32" color="#D32F2F" />
-        <div class="func-name">刮刮乐</div>
+      <div class="func-item" @click="$router.push('/settings')">
+        <van-icon name="setting-o" size="32" color="#D32F2F" />
+        <div class="func-name">设置</div>
       </div>
     </div>
   </div>
@@ -158,13 +162,27 @@ const bgStyle = computed(() =>
   color: var(--primary-color);
 }
 .budget-section {
-  margin-top: 12px;
+  margin-top: 14px;
 }
 .budget-info {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
   color: var(--on-surface-variant);
+  margin-bottom: 6px;
+}
+.budget-bar-container {
+  width: 100%;
+  height: 14px;
+  background: #E0E0E0;
+  border-radius: 7px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.budget-bar-fill {
+  height: 100%;
+  border-radius: 7px;
+  transition: width 0.4s ease, background 0.3s;
 }
 .budget-alert {
   text-align: center;

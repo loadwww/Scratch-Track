@@ -6,23 +6,31 @@
     </div>
 
     <div class="card">
-      <div class="chart-title">最近 6 个月投入/中奖对比</div>
+      <div class="chart-title">最近 6 个月投入/中奖对比 <span class="chart-unit">单位：元</span></div>
       <BarChart :data="monthChartData" unit="100" />
+      <div class="legend">
+        <span class="legend-item"><span class="legend-dot" style="background:#D32F2F"></span>投入</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#4CAF50"></span>中奖</span>
+      </div>
     </div>
 
     <div class="card">
-      <div class="chart-title">最近 6 次记录投入/中奖对比</div>
+      <div class="chart-title">最近 6 次记录投入/中奖对比 <span class="chart-unit">单位：元</span></div>
       <BarChart :data="recentChartData" unit="50" />
+      <div class="legend">
+        <span class="legend-item"><span class="legend-dot" style="background:#D32F2F"></span>投入</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#4CAF50"></span>中奖</span>
+      </div>
     </div>
 
     <div v-if="olderData.length > 0" class="card">
-      <div class="chart-title">6 个月以前数据</div>
+      <div class="chart-title">6 个月以前数据 <span class="chart-unit">单位：元</span></div>
       <div v-for="m in olderData" :key="m.key" class="older-row">
         <span class="older-month">{{ m.key }}</span>
         <div class="older-bar-container">
           <div class="older-bar" :style="{ width: m.barWidth, background: m.profit >= 0 ? 'var(--success)' : 'var(--error)' }"></div>
         </div>
-        <span :class="m.profit >= 0 ? 'profit-positive' : 'profit-negative'">{{ m.profit >= 0 ? '+' : '' }}{{ m.profit.toFixed(0) }}</span>
+        <span :class="m.profit >= 0 ? 'profit-positive' : 'profit-negative'">{{ m.profit >= 0 ? '+' : '' }}{{ m.profit.toFixed(0) }} 元</span>
       </div>
     </div>
   </div>
@@ -78,6 +86,10 @@ const olderData = computed(() => {
 
 <style scoped>
 .chart-title { font-size: 15px; font-weight: 600; margin-bottom: 12px; }
+.chart-unit { font-size: 12px; font-weight: 400; color: var(--on-surface-variant); }
+.legend { display: flex; gap: 16px; justify-content: center; margin-top: 8px; font-size: 13px; color: var(--on-surface-variant); }
+.legend-item { display: flex; align-items: center; gap: 4px; }
+.legend-dot { display: inline-block; width: 10px; height: 10px; border-radius: 2px; }
 .older-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
 .older-month { font-size: 12px; width: 70px; color: var(--on-surface-variant); }
 .older-bar-container { flex: 1; height: 16px; background: var(--surface-variant); border-radius: 4px; overflow: hidden; }

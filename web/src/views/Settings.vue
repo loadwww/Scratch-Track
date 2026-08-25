@@ -31,10 +31,6 @@
     </van-cell-group>
 
     <van-cell-group inset style="margin-top: 12px">
-      <van-field label="刮刮乐每日金币" v-model="scratchInput" type="number" @blur="saveScratchCoins" />
-    </van-cell-group>
-
-    <van-cell-group inset style="margin-top: 12px">
       <van-cell title="自定义壁纸" is-link @click="pickWallpaper" :value="settings.wallpaper ? '已设置' : ''" />
       <input ref="wallpaperInput" type="file" accept="image/*" style="display:none" @change="onWallpaperPicked" />
       <van-cell title="清除壁纸" is-link @click="settings.wallpaper = ''" v-if="settings.wallpaper" />
@@ -56,16 +52,12 @@ import { showToast } from 'vant'
 
 const settings = useSettingsStore()
 const budgetInput = ref(String(settings.monthlyBudget || ''))
-const scratchInput = ref(String(settings.scratchDailyCoins || ''))
 const musicInput = ref(null)
 const wallpaperInput = ref(null)
 const importInput = ref(null)
 
 function saveBudget() {
   settings.monthlyBudget = Number(budgetInput.value) || 0
-}
-function saveScratchCoins() {
-  settings.scratchDailyCoins = Number(scratchInput.value) || 0
 }
 
 function pickMusic() { musicInput.value?.click() }

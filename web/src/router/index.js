@@ -9,7 +9,6 @@ const routes = [
   { path: '/lottery/add', name: 'lottery-add', component: () => import('../views/LotteryAdd.vue') },
   { path: '/chart', name: 'chart', component: () => import('../views/Chart.vue') },
   { path: '/random', name: 'random', component: () => import('../views/Random.vue') },
-  { path: '/scratch', name: 'scratch', component: () => import('../views/Scratch.vue') },
   { path: '/settings', name: 'settings', component: () => import('../views/Settings.vue') }
 ]
 

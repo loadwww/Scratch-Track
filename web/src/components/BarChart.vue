@@ -44,7 +44,7 @@ function draw() {
     ctx.moveTo(padding.left, y)
     ctx.lineTo(width - padding.right, y)
     ctx.stroke()
-    ctx.fillText(String(val), 2, y + 4)
+    ctx.fillText('¥' + val, 2, y + 4)
   }
 
   props.data.forEach((d, i) => {
